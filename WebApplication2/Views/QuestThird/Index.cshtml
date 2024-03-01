@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Book>
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Quest 3: CRUD for book</h2>
+
+<form asp-controller="QuestThird" asp-action="Index" method="get">
+    <div class="row">
+        <div class="col">
+            <label for="Name" class="form-label">Name</label>
+            <input class="form-control" name="name" id="Name" type="text"
+                    value="@ViewData["name"]"/>
+        </div>
+        <div class="col">
+            <label for="Author" class="form-label">Author</label>
+            <input class="form-control" name="author" type="text" id="Author"
+                   value="@ViewData["author"]"/>
+        </div>
+        <div class="col">
+            <label for="YOP" class="form-label">Year of publication</label>
+            <input class="form-control" name="yearOfPublication" type="number" id="YOP"
+                    value="@ViewData["yearOfPublication"]">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+
+<a class="btn btn-primary m-5" role="button" aria-pressed="true" asp-controller="QuestThird" asp-action="Create">
+    Create
+</a>
+
+<table class="table table-hover">
+    <thead>
+    <th scope="col">@nameof(Book.Id)</th>
+    <th scope="col">@nameof(Book.Author)</th>
+    <th scope="col">@nameof(Book.Name)</th>
+    <th scope="col">@nameof(Book.YearOfPublication)</th>
+    <th scope="col">Delete</th>
+    <th scope="col">Update</th>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.Id</th>
+            <th>@item.Author</th>
+            <th>@item.Name</th>
+            <th>@item.YearOfPublication</th>
+            <th><a class="btn btn-danger" role="button" asp-controller="QuestThird" 
+                   asp-action="DeleteBook" asp-route-bookId="@item.Id">
+                Delete
+            </a></th>
+            <th><a class="btn btn-link" role="button" asp-controller="QuestThird"
+                   asp-action="Update" asp-route-bookId="@item.Id">
+                Update
+            </a></th>
+        </tr>
+    }
+    </tbody>
+</table>

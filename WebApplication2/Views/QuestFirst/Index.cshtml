@@ -1,0 +1,16 @@
+﻿@model WebApplication2.Models.Array
+@{
+    ViewData["Title"] = "Quest 1: Generate array and calculate arithmetic average of positive number";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p style="{overflow-wrap: break-word}">
+    @foreach (var item in Model.GetArray)
+    {
+        <span>@item </span>
+    }
+</p>
+
+<h1>Average of positive number:</h1> 
+<span>@Model.AverageValue</span>

@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Quest 2: Count + and -";
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title </h2>
+
+<form asp-controller="QuestSecond" asp-action="Count" method="get">
+    <textarea name="text" class="form-control"></textarea>
+    <button type="submit" class="btn btn- mt-5">Submit</button>
+</form>
